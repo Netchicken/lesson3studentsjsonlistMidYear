@@ -87,7 +87,7 @@ function App() {
       </button>
       <div>
         <h2>{gameData.Q}</h2>
-        <h4>{answer ? "You selected " + answer + winlose : ""}</h4>
+        {/* <h4>{answer ? "You selected " + answer + winlose : ""}</h4> */}
       </div>
       <div className='col-sm'>
         <Select
