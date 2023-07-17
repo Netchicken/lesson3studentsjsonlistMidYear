@@ -6,6 +6,7 @@ import { Random } from "./Utilities/Random.js";
 import { selectCustomStyles } from "./Utilities/SelectReactSetting.js";
 import Swal from "sweetalert2";
 import withReactContent from 'sweetalert2-react-content'
+import { ResultsPage } from "./Components/ResultsPage.js";
 
 
 function App() {
@@ -14,6 +15,11 @@ function App() {
   const [answerData, setAnswerData] = useState(sortedListAnswers);
   const [answer, setAnswer] = useState("");
   const [winlose, setWinlose] = useState("");
+  const [answersCorrect, setAnswersCorrect] = useState([]);
+  const [answersIncorrect, setAnswersIncorrect] = useState([]);
+
+
+
 
   const MySwal = withReactContent(Swal)
 
@@ -49,7 +55,7 @@ function App() {
           footer: 'Have another go'
 
         })
-
+        setAnswersCorrect([...answersCorrect, gameData.A])
 
         return "win";
       } else {
@@ -62,6 +68,7 @@ function App() {
 
 
         })
+        setAnswersIncorrect([...answersIncorrect, gameData.Q + " is not " + answerLet])
         return "lose";
       }
     }
@@ -93,6 +100,11 @@ function App() {
           controlShouldRenderValue={false}
         />
       </div>
+
+
+      <ResultsPage answersCorrect={answersCorrect} answersIncorrect={answersIncorrect} />
+
+
     </div>
   );
 }
